@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 9, 2006 6:27:53 PM by Hibernate Tools 3.2.0.beta7 -->
+<hibernate-mapping>
+    <class name="com.entity.Message" table="MESSAGES" optimistic-lock="version" dynamic-update="true">
+    
+    	<cache usage="read-write"/>
+    
+        <id name="id" column="MESSAGEID">
+            <generator class="assigned"/>
+        </id>
+        
+        <version name="version"></version>
+        
+        <property name="text" column="TEXT"></property>
+        
+        <property name="description"></property>
+        
+        <many-to-one name="nextMessage" class="com.entity.Message" cascade="all" 
+        													column="NEXTMESSAGEID" lazy="proxy" />
+        
+    </class>
+</hibernate-mapping>
